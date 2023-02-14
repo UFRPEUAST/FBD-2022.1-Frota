@@ -29,6 +29,8 @@ class DaoVeiculo():
                        (veiculo.placa, veiculo.modelo)
                        )
         self.connect.commit()
+        id = cursor.fetchone()[0]
+        return id
 
     def get_por_id(self, id):
         cursor = self.connect.cursor()
@@ -39,3 +41,9 @@ class DaoVeiculo():
         coluns_name = [desc[0] for desc in cursor.description]
         data = dict(zip(coluns_name, veiculo))
         return Veiculo(**data)
+
+    def atualizar(self, veiculo):
+        cursor = self.connect.cursor()
+        cursor.execute(SQLVeiculo._UPDATE_BY_ID, (veiculo.placa, veiculo.modelo, veiculo.id))
+        self.connect.commit()
+        return True

@@ -1,5 +1,6 @@
 import psycopg2
 
+from modulos.abastecimento.sql import SQLAbastecimento
 from modulos.veiculo.sql import SQLVeiculo
 
 
@@ -18,6 +19,7 @@ class ConnectDataBase:
     def init_table(self):
         cursor = self._connect.cursor()
         cursor.execute(SQLVeiculo._SCRIPT_CREATE_TABLE)
+        cursor.execute(SQLAbastecimento._SCRIPT_CREATE_TABLE)
         self._connect.commit()
     def sql_new(self):
         return

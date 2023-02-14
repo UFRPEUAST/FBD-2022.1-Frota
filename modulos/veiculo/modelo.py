@@ -5,13 +5,14 @@ class Veiculo(object):
         self.id = id
 
     def __str__(self):
-        return f'{self.placa}-{self.modelo}'
+        return f'ID: {self.id} - PLaca: {self.placa} - Modelo{self.modelo}'
 
     def get_json(self):
         return {
-            'id':self.id,
-            'placa':self.placa,
-            'modelo':self.modelo,
+            'id': self.id,
+            'placa': self.placa,
+            'modelo': self.modelo,
         }
+
     def get_sql_insert(self):
         return
