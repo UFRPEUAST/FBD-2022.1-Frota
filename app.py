@@ -68,4 +68,11 @@ def veiculos_abastecimentos(id: int):
     abastecimentos = dao_abastecimento.get_por_veiculo(veiculo.id)
     return make_response(jsonify(abastecimentos))
 
+
+@app.route('/veiculo/abastecimentos/', methods=['GET'])
+def veiculos_relatorio_abastecimentos():
+    abastecimentos = dao_abastecimento.get_relatorio_abastecimentos()
+    return make_response(jsonify(abastecimentos))
+
+
 app.run()

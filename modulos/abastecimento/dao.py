@@ -30,3 +30,14 @@ class DaoAbastecimento():
             # print('data', data)
             # veiculos.append(Veiculo(**data).get_json())
         return abastecimentos
+
+    def get_relatorio_abastecimentos(self):
+        cursor = self.connect.cursor()
+        sql = SQLAbastecimento._SELECT_ALL_AND_VEICULO
+        cursor.execute(sql)
+        abastecimentos = []
+        colluns_name = [desc[0] for desc in cursor.description]
+        for abastecimento in cursor.fetchall():
+            data = dict(zip(colluns_name, abastecimento))
+            abastecimentos.append(data)
+        return abastecimentos
